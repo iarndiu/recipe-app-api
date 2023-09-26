@@ -28,11 +28,15 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = []
 
 
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ['title', 'user']
+
+
 # Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
-admin.site.register(Recipe)
+admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Tag)
 admin.site.register(Ingredient)
